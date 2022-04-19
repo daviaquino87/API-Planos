@@ -23,10 +23,16 @@ var DB = {
            id:3,
            name: "200MB",
            preco: 80.00
-       }
+       },
+			{
+				id:4,
+				name:"120gb",
+				preco: 90.00
+			}
     ]
     
 };
+
 ////////////////////////////////////////////////
 app.route('/')
 //ROTA INICIAL
@@ -50,7 +56,9 @@ app.route('/planos')
 //ROTA GET PARA LISTAR OS PLANOS
 .get((req, res) => {
     res.statusCode = 200;
-    res.json(DB.planos);
+    res.render("index",{
+			Planos: DB.planos
+		});
 })
 ////////////////////////////////////////////////
 

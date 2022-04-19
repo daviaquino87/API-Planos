@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+   <style>
+      table, th, td {
+      border:1px solid black;
+      }
+      #acoes{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      flex-direction: row;
+      text-align: center;
+      width:200px
+      }
+      button{
+      width:80px;
+      margin: auto 9px;
+      }
+
+		 #td-acoes{
+			 width:100px
+		 }
+   </style>
+   <body>
+      <h2>Tabela de Planos</h2>
+      <table style="width:100%">
+         <tr>
+            <th>ID</th>
+            <th>Plano</th>
+            <th>Preço</th>
+            <th>Ações</th>
+         </tr>
+         <% Planos.forEach(plano => {%>
+         <tr>
+            <td> <%= plano.id %></td>
+            <td> <%= plano.name %></td>
+            <td> <%= plano.preco %></td>
+            <td id="td-acoes">
+               <div id="acoes">
+                  <button>Editar</button>
+                  <button>Excluir</button>
+               </div>
+            </td>
+         </tr>
+         <%})%>
+      </table>
+   </body>
+</html>
