@@ -3,7 +3,8 @@ const app = express();
 const bodyParser = require('body-parser');
 
 app.use(bodyParser.urlencoded({extended: false}));
-app.use(bodyParser.json())
+app.use(bodyParser.json());
+app.set('view engine','ejs');
 
 //variavel com os planos (sera substituida por um banco de dados)
 var DB = {
@@ -26,16 +27,32 @@ var DB = {
     ]
     
 };
+////////////////////////////////////////////////
+app.route('/')
+//ROTA INICIAL
+.get((req, res) => {
+    res.statusCode = 200;
+    res.redirect("/login");
+})
+////////////////////////////////////////////////
+
+////////////////////////////////////////////////
+app.route('/login')
+//ROTA LOGIN
+.get((req, res) => {
+    res.statusCode = 200;
+    res.render("login");
+})
+////////////////////////////////////////////////
 
 ////////////////////////////////////////////////
 app.route('/planos')
 //ROTA GET PARA LISTAR OS PLANOS
 .get((req, res) => {
     res.statusCode = 200;
-    res.json(DB.planos)
+    res.json(DB.planos);
 })
 ////////////////////////////////////////////////
-
 
 ////////////////////////////////////////////////
 app.route('/plano')
