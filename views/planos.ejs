@@ -6,12 +6,10 @@
    <body>
       <h2>Cadastro de planos</h2>
       <form action="/plano" method="POST">
-         <label for="fname">ID</label><br>
-         <input type="text" id="id" name="id" placeholder="ID do plano"><br>
          <label for="fname">Nome do plano:</label><br>
          <input type="text" id="name" name="name" placeholder="Nome do plano"><br>
          <label for="lname">Preço:</label><br>
-         <input type="number" id="preco" name="preco" placeholder="Preço do plano" ><br><br>
+         <input type="number" id="preco" name="preco" step="0.010" placeholder="Preço do plano" ><br><br>
          <input type="submit" value="Cadastrar">
       </form>
    </body>

@@ -2,8 +2,8 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const connection = require("./database/database.js");
-const planosController = require("./controllers/planosControler");
-const planoModel = require("./models/Planos");
+const planosController = require("./planos/planosControler");
+const planoModel = require("./planos/planos");
 
 
 

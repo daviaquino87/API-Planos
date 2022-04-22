@@ -13,12 +13,14 @@ const Plano = conection.define('planos',{
         allowNull: false
     },
     preco: {
-        type: sequealize.NUMBER,
+        type: sequealize.FLOAT,
         allowNull: false
 
     }
 });
 
-Plano.sync({force:true}).then(() => {
-    console.log("tabela criada");
-})
+//   Plano.sync({force:true}).then(() => {
+//      console.log("tabela criada");
+//  })
+
+module.exports = Plano;
