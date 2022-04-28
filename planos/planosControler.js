@@ -101,6 +101,25 @@ router.route('/plano/update')
     })
 ////////////////////////////////////////////////
 
+router.post("/planos/delete", (req,res)=>{
+    var id = req.body.id;
+    if(id != undefined){
+        if(!isNaN(id)){
+            Plano.destroy({
+                where: {
+                    id:id
+                }
+                }).then(() =>{
+                    res.redirect("/planos");
+            })
+        }else{//NÃO FOR UM NUMERO
+            res.redirect("/planos");
+        }
+    }else{//NULL
+        res.redirect("/planos");
+    }
+})
+
 
 
 

@@ -40,7 +40,10 @@
             <td id="td-acoes">
                <div id="acoes">
                   <a href="/planos/edit/<%= plano.id %>"> <button>Editar</button></a>
-                  <button class="button">Delete</button>
+                  <form method="POST" action="/planos/delete" style="display: inline;" onsubmit="confirmarDelecao(event,this)">
+                     <input type="hidden" name="id" value="<%= plano.id %>">
+                     <button class="btn btn-danger">Delete</button>
+                 </form>
                </div>
             </td>
          </tr>
