@@ -1,7 +1,7 @@
 const sequealize = require('sequelize');
 const conection = require("../database/database");
 
-const Plano = conection.define('planos',{
+const Plano = conection.define('planos', {
     id: {
         type: sequealize.INTEGER,
         autoIncrement: true,

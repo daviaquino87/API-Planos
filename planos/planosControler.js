@@ -4,25 +4,37 @@ const Plano = require("../planos/planos")
 
 
 ////////////////////////////////////////////////
-router.get("/planos", (req,res)=>{
+//ROTA INICIAL
+router.route('/')
+    .get((req, res) => {
+        res.statusCode = 200;
+        res.render("login");
+    })
+////////////////////////////////////////////////
+
+
+////////////////////////////////////////////////
+router.get("/planos", (req, res) => {
     Plano.findAll().then(planos => {
-        res.render("index", {Planos: planos})
+        res.render("index", {
+            Planos: planos
+        })
     })
 });
 ////////////////////////////////////////////////
 
 ////////////////////////////////////////////////
+//ROTA GET PARA LISTAR OS PLANOS
 router.route('/planos/cadastro')
-    //ROTA GET PARA LISTAR OS PLANOS
     .get((req, res) => {
         res.statusCode = 200;
-        res.render("planos");
+        res.render("admin/planos");
     })
 ////////////////////////////////////////////////
 
 ////////////////////////////////////////////////
-router.route('/plano')
-    //ROTA POST PARA CRIAR NOVO PLANO
+//ROTA POST PARA CRIAR NOVO PLANO
+router.route('/plano/save')
     .post((req, res) => {
         var {
             id,
@@ -34,7 +46,7 @@ router.route('/plano')
             id: id,
             nome: name,
             preco: preco,
-    
+
         }).then(() => {
             res.redirect("/planos")
         })
@@ -43,39 +55,49 @@ router.route('/plano')
 
 
 ////////////////////////////////////////////////
-//ROTA GET QUE BUSCA O FILME PELO ID
-router.route('/planos/:id')
+//ROTA GET QUE BUSCA O PLANO PELO ID
+router.route('/planos/edit/:id')
     .get((req, res) => {
-    var id = req.params.id
+        var id = req.params.id
 
-    Plano.findByPk(id).then(plano=> {
-        if(plano != undefined ){
-            console.log(plano)
-                res.render("edit" , {planos: plano})
-        }else{
-            res.sendStatus(400)
-        }
-    }).catch(err => {
-        res.sendStatus(404)
+        Plano.findByPk(id).then(plano => {
+            if (plano != undefined) {
+                res.render("admin/edit", {
+                    planos: plano
+                })
+            } else {
+                res.sendStatus(400)
+            }
+        }).catch(err => {
+            res.sendStatus(404)
 
+        })
     })
-})
-    //ROTA PUT PARA ATUALIZAR FILME
+
+
+//ROTA PUT PARA ATUALIZAR O PLANO   
+router.route('/plano/update')
     .post((req, res) => {
         var {
             id,
             name,
             preco
         } = req.body;
-    
-        Plano.update({nome: name, preco: preco},{
-            where:{
-                id:id
+
+        //var id = req.body.id;
+        console.log("esse é o id ->" + id)
+
+        Plano.update({
+            nome: name,
+            preco: preco
+        }, {
+            where: {
+                id: id
             }
-        }).then(() =>{
+        }).then(() => {
             res.redirect("/planos")
         })
-    
+
     })
 ////////////////////////////////////////////////
 

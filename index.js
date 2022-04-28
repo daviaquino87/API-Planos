@@ -16,22 +16,11 @@ app.set('view engine', 'ejs');
 
 
 //database connection verification
-connection.authenticate().then(()=>{
+connection.authenticate().then(() => {
     console.log("Conexão feita com sucesso");
-}).catch((error)=>{
+}).catch((error) => {
     console.log(error);
 });
-
-
-////////////////////////////////////////////////
-app.route('/')
-    //ROTA INICIAL
-    .get((req, res) => {
-        res.statusCode = 200;
-        res.render("login");
-    })
-////////////////////////////////////////////////
-
 
 app.listen(3000, () => {
     console.log('server on');

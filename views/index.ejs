@@ -39,11 +39,8 @@
             <td> <%= plano.preco %></td>
             <td id="td-acoes">
                <div id="acoes">
-                 <a href="/planos/<%= plano.id %>"> <button>Editar</button></a>
-                 <form method="POST" action="/planos/delete" style="display: inline;" onsubmit="confirmarDelecao(event,this)">
-                  <input type="hidden" name="id" value="<%= plano.id %>">
-                  <button class="button"">Delete</button>
-              </form>
+                  <a href="/planos/edit/<%= plano.id %>"> <button>Editar</button></a>
+                  <button class="button">Delete</button>
                </div>
             </td>
          </tr>
