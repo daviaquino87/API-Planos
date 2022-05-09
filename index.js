@@ -2,8 +2,9 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const connection = require("./database/database.js");
-const planosController = require("./planos/planosControler");
-const planoModel = require("./planos/planos");
+const planosController = require("./controllers/planosControler");
+const loginController = require("./controllers/loginController");
+const planoModel = require("./models/Planos");
 
 
 
@@ -11,7 +12,7 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 app.use(bodyParser.json());
-app.use("/", planosController);
+app.use("/", loginController,planosController);
 app.set('view engine', 'ejs');
 
 
