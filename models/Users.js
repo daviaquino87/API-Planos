@@ -1,7 +1,7 @@
 const sequealize = require('sequelize');
 const conection = require("../database/database");
 
-const Plano = conection.define('planos', {
+const Users = conection.define('users', {
     id: {
         type: sequealize.INTEGER,
         autoIncrement: true,
@@ -12,13 +12,14 @@ const Plano = conection.define('planos', {
         type: sequealize.STRING,
         allowNull: false
     },
-    preco: {
-        type: sequealize.FLOAT,
+    senha: {
+        type: sequealize.STRING,
         allowNull: false
 
     }
 });
 
-Plano.sync()
+Users.sync()
+     
 
-module.exports = Plano;
+module.exports = Users;
