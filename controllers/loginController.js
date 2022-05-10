@@ -1,6 +1,6 @@
 const express = require('express');
 const login = express.Router();
-const planosController = require("./planosControler");
+
 
 
 login.route('/')
@@ -8,5 +8,7 @@ login.route('/')
         res.statusCode = 200;
         res.render("login");
     })
+
+
 
 module.exports = login;

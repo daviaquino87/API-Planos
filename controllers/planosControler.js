@@ -5,6 +5,8 @@ const Plano = require("../models/Planos")
 
 
 
+
+
 router.get("/planos", (req, res) => {
     Plano.findAll().then(planos => {
         res.render("index", {
